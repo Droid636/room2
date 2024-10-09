@@ -1,27 +1,107 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Contenedor principal */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #121E1B; /* bg-gray-100 */
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Caja del formulario */
+.login-box {
+  background-color: #F5E5C4; /* bg-white */
+  padding: 2rem; /* p-8 */
+  border-radius: 10%; /* rounded-lg */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+  width: 100%;
+  max-width: 28rem; /* max-w-md */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Título */
+.login-title {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  color: #2d3748; /* text-gray-800 */
+  text-align: center;
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/* Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* space-y-6 */
+}
+
+/* Grupo de formulario */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Etiquetas */
+.form-group label {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  color: #4a5568; /* text-gray-700 */
+  margin-bottom: 0.25rem;
+}
+
+/* Inputs */
+.form-group input {
+  padding: 0.5rem; /* px-3 py-2 */
+  border: 1px solid #d2d6dc; /* border-gray-300 */
+  border-radius: 100px; /* rounded-md */
+  font-size: 0.875rem; /* text-sm */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* shadow-sm */
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #5a67d8; /* focus:border-indigo-500 */
+  box-shadow: 0 0 0 2px rgba(90, 103, 216, 0.2); /* focus:ring-indigo-500 */
+}
+
+/* Botón de inicio de sesión */
+.login-button {
+  width: 100%;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  background-color: #121E1B; /* bg-blue-600 */
+  color: white;
+  border-radius: 100px; /* rounded-md */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600; /* font-semibold */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-button:hover {
+  background-color: #2b6cb0; /* hover:bg-blue-700 */
+}
+
+/* Link de registro */
+.register-link {
+  margin-top: 1.5rem; /* mt-6 */
+  text-align: center;
+  font-size: 0.875rem; /* text-sm */
+  color: #718096; /* text-gray-600 */
+}
+
+.register-link a {
+  color: #3182ce; /* text-blue-600 */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.register-link a:hover {
+  text-decoration: none; /* hover:underline */
 }
