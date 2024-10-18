@@ -1,0 +1,57 @@
+div {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Alinea el contenido verticalmente */
+    gap: 20px; /* Espacio entre tarjetas */
+    padding: 20px;
+  }
+  
+  
+  .card {
+    flex: 0 0 250px; /* Cada tarjeta ocupará 250px de ancho */
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    scroll-snap-align: start; /* Alinea las tarjetas al principio */
+  }
+  
+  .card h3 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    .card {
+      flex: 0 0 200px; /* Ancho de tarjeta reducido en pantallas medianas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      flex: 0 0 150px; /* Ancho de tarjeta reducido en pantallas pequeñas */
+    }
+  }
+  
