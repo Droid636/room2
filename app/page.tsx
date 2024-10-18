@@ -19,7 +19,7 @@ export default function Login() {
           <button type="submit" className="login-button">Iniciar</button>
         </form>
         <p className="register-link">
-          ¿No tienes una cuenta? <Link href="/register" style={{color: 'black'}}>xd</Link> 
+          ¿No tienes una cuenta? <Link href="/register"> Registrate</Link> 
         </p>
       </div>
     </div>
