@@ -54,4 +54,67 @@ div {
       flex: 0 0 150px; /* Ancho de tarjeta reducido en pantallas pequeñas */
     }
   }
-  
+  /* Estilo para ocultar el checkbox */
+.modal-toggle {
+  display: none;
+}
+
+/* Estilo del modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Mostrar el modal cuando el checkbox está marcado */
+.modal-toggle:checked + .modal {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Fondo del modal para cerrar al hacer clic fuera del contenido */
+.modal-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+/* Estilo del contenido del modal */
+.modal-content {
+  position: relative;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+/* Botón para cerrar el modal */
+.close-modal-label {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Estilo para abrir el modal */
+.open-modal-label {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
