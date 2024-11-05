@@ -1,5 +1,5 @@
 import React from "react";
-import "@/app/register/register.css"
+import "@/app/register/register.css";
 
 function use() {
   return (
@@ -7,7 +7,7 @@ function use() {
       <div className="register-box">
         <h2 className="register-title">Regístrate</h2>
         <form className="register-form">
-          
+
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="name">Nombre</label>
@@ -15,7 +15,7 @@ function use() {
             </div>
             <div className="form-group">
               <label htmlFor="lastname">Apellido</label>
-              <input type="text" id="lastname"  className="form-input" />
+              <input type="text" id="lastname" className="form-input" />
             </div>
           </div>
 
@@ -26,14 +26,14 @@ function use() {
             </div>
             <div className="form-group">
               <label htmlFor="phone">Teléfono</label>
-              <input type="phone" id="phone"  className="form-input" required />
+              <input type="phone" id="phone" className="form-input" required />
             </div>
           </div>
 
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="password">Contraseña</label>
-              <input type="password" id="password"  className="form-input" required />
+              <input type="password" id="password" className="form-input" required />
             </div>
             <div className="form-group">
               <label htmlFor="role">Seleccione un rol</label>
@@ -41,6 +41,19 @@ function use() {
                 <option value="">Seleccione una opción</option>
                 <option value="cliente">Cliente</option>
                 <option value="vendedor">Vendedor</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="gender">Género</label>
+              <select id="gender" className="form-input" required>
+                <option value="">Seleccione una opción</option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="otro">Otro</option>
+                <option value="prefiere-no-decirlo">Prefiere no decirlo</option>
               </select>
             </div>
           </div>
