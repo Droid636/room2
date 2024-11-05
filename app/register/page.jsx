@@ -59,6 +59,9 @@ function use() {
           </div>
 
           <button type="submit" className="register-button">Registrarse</button>
+          <p className="inic-hom">
+          ¿Ya tienes cuenta? <a href="/"> Inicio</a> 
+        </p>
         </form>
       </div>
     </div>
