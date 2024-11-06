@@ -1,13 +1,15 @@
 import React from 'react';
 import "@/app/home/home.css";
 
+
 function HomePage() {
   return (
     <div className="home-container">
-      <h1 className="welcome-title">Bienvenido</h1>
+
       <div className="card-container">
         {/* Card 1 que activa el modal */}
         <label htmlFor="modalToggle" className="card clickable-card">
+          <img className='img' src="https://i.pinimg.com/736x/8c/42/25/8c42257e089f1f737f9803ec2e3f8a49.jpg" alt="ubicacion" />
           <h3>Ingresa tu Ubicacion</h3>
           
         </label>

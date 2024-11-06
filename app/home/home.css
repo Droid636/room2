@@ -116,3 +116,8 @@
   border: 1px solid #ddd; /* Borde ligero */
   margin-bottom: 20px; /* Espacio antes del botón */
 }
+.img{
+  width: 100px;  /* Ajusta el tamaño de la imagen */
+  height: auto;  /* Mantén la proporción de la imagen */
+  margin-bottom: 10px;
+}
