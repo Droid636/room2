@@ -3,8 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Corregido desde 700vh a 100vh */
-  padding: 20px; /* Añadir padding para espaciado en pantallas pequeñas */
+  min-height: 100vh;
+  padding: 50px;
+  overflow: auto; /* Permite scroll si el contenido es muy grande */
 }
 
 .register-box {
@@ -12,10 +13,21 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
-  width: 100%; /* Cambiado a 100% para que se ajuste al contenedor */
-  
+  max-width: 500px;
+  width: 100%;
   box-sizing: border-box;
+}
+
+/* Estilo en pantallas pequeñas: limita la altura del formulario y agrega scroll */
+@media (max-width: 768px) {
+  .register-box {
+    max-height: 90vh; /* Limita la altura al 90% de la pantalla */
+    overflow-y: auto; /* Añade scroll vertical dentro del formulario */
+    padding: 15px;
+  }
+  .register-title {
+    font-size: 20px;
+  }
 }
 
 .register-title {
@@ -28,29 +40,28 @@
 .register-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  
 }
 
 /* Organización de los inputs en filas de dos */
 .form-row {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
+  
 }
 
 .form-group {
-  flex: 1;
+  padding: 5px;
   display: flex;
   flex-direction: column;
 }
 
 .form-input {
- 
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
   width: 100%;
-  box-sizing: border-box;
+  padding: 10px;box-sizing: border-box;
 }
 
 .form-input:focus {
@@ -66,6 +77,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  width: 100%; /* Asegura que el botón ocupe todo el ancho */
 }
 
 .register-button:hover {
@@ -75,23 +87,10 @@
 /* Estilo responsivo para pantallas de laptop */
 @media (max-width: 1024px) {
   .register-box {
-    padding: 20px; /* Reducir padding para mejor ajuste */
+    padding: 20px;
   }
   .form-row {
-    gap: 10px; /* Reducir espacio entre los inputs */
-  }
-}
-
-/* Estilo responsivo para pantallas medianas y pequeñas */
-@media (max-width: 768px) {
-  .form-row {
-    flex-direction: column; /* Inputs en una sola columna */
-  }
-  .register-box {
-    padding: 15px; /* Reducir padding para pantallas pequeñas */
-  }
-  .register-title {
-    font-size: 20px; /* Reducir el tamaño del título */
+    gap: 10px;
   }
 }
 
@@ -101,9 +100,11 @@
     flex-direction: column;
   }
   .register-box {
-    padding: 10px; /* Ajustar padding para dispositivos muy pequeños */
+    padding: 10px;
+    max-width: 100%;
   }
 }
+
 .inic-hom {
   text-align: center;
 }
