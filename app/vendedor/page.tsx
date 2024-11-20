@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { useRouter } from 'next/navigation'; 
-import "@/app/vendendor/home.css";
+import "@/app/vendedor/home.css";
 import image from "@/app/img/casa.jpg";
 import Nav from "../nav";
 import { FaEdit, FaPlus, FaSearch, FaTrashAlt } from 'react-icons/fa';
