@@ -20,6 +20,8 @@ function Register() {
     gender: "",
   });
 
+  const [showModal, setShowModal] = useState(false);
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
@@ -31,26 +33,21 @@ function Register() {
   const validateForm = () => {
     const newErrors = {};
 
-    // Validar contraseña
     if (!formData.password) {
       newErrors.password = "La contraseña es obligatoria.";
     } else if (formData.password.length < 8) {
       newErrors.password = "La contraseña debe tener al menos 8 caracteres.";
     }
 
-    // Validar rol
     if (!formData.role) {
       newErrors.role = "El rol es obligatorio.";
     }
 
-    // Validar género
     if (!formData.gender) {
       newErrors.gender = "El género es obligatorio.";
     }
 
     setErrors(newErrors);
-
-    // Devuelve `true` si no hay errores
     return Object.keys(newErrors).length === 0;
   };
 
@@ -58,7 +55,7 @@ function Register() {
     e.preventDefault();
 
     if (!validateForm()) {
-      return; // Detener el envío si hay errores
+      return;
     }
 
     try {
@@ -74,10 +71,12 @@ function Register() {
       );
 
       if (response.ok) {
-        console.log("Usuario creado con éxito");
+        setShowModal(true);
+        setTimeout(() => {
+          window.location.href = "http://localhost:4000";
+        }, 3000); // Redirige después de 3 segundos
       } else {
         console.error("Error al crear el usuario");
-        console.log(formData)
       }
     } catch (error) {
       console.error("Error al conectar con la API:", error);
@@ -197,6 +196,16 @@ function Register() {
           </p>
         </form>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Usuario creado con éxito</h2>
+            <p>Serás redirigido al inicio en breve...</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
