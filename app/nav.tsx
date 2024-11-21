@@ -1,14 +1,33 @@
-"use client"; 
+"use client";
 
-import React, { useState } from 'react';
-import './nav.css'; // Asegúrate de tener este archivo CSS y vincularlo correctamente
+import React, { useState } from "react";
+import { usePathname } from "next/navigation"; // Para obtener la ruta actual
+import "./nav.css";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // Obtén la ruta actual
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  // Define los enlaces según la ruta o el rol
+  const menuItems = {
+    cliente: [
+      { name: "Inicio", path: "/home" },
+      { name: "Favoritos", path: "/" },
+      { name: "Salir", path: "/" },
+    ],
+    propietario: [
+      { name: "Cuartos", path: "/" },
+      { name: "Subir Habitacion", path: "/subhabitacion" },
+      { name: "Salir", path: "/" },
+    ],
+  };
+
+  // Determina el rol basado en la ruta actual (puedes modificar esto según tu lógica real)
+  const userRole = pathname.includes("vendedor") ? "propietario" : "cliente";
 
   return (
     <header className="header">
@@ -18,10 +37,13 @@ function Nav() {
           ☰
         </button>
       </div>
-      <nav className={`menu ${isOpen ? 'open' : ''}`}>
+      <nav className={`menu ${isOpen ? "open" : ""}`}>
         <ul className="menu-list">
-          <li><a href="/home">Inicio</a></li>
-          <li><a href="/">Salir</a></li>
+          {menuItems[userRole].map((item, index) => (
+            <li key={index}>
+              <a href={item.path}>{item.name}</a>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>
