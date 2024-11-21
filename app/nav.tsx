@@ -1,32 +1,48 @@
 "use client";
 
 import React, { useState } from "react";
-import { usePathname } from "next/navigation"; // Para obtener la ruta actual
+import { usePathname, useRouter } from "next/navigation"; // Para la navegación
 import "./nav.css";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // Obtén la ruta actual
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para el modal
+  const pathname = usePathname();
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // Define los enlaces según la ruta o el rol
+  const handleLogout = () => {
+    // Lógica para destruir la sesión
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Limpia cookies
+    localStorage.removeItem("user"); // Limpia almacenamiento local
+    sessionStorage.clear(); // Limpia sesión
+    setIsModalOpen(false); // Cierra el modal
+
+    // Redirigir a la página de inicio de forma segura
+    router.replace("/"); // Usa replace para evitar que se almacene en el historial
+  };
+
   const menuItems = {
     cliente: [
       { name: "Inicio", path: "/home" },
-      { name: "Favoritos", path: "/" },
-      { name: "Salir", path: "/" },
+      {
+        name: "Salir",
+        action: () => setIsModalOpen(true), // Abre el modal
+      },
     ],
     propietario: [
       { name: "Cuartos", path: "/" },
-      { name: "Subir Habitacion", path: "/subhabitacion" },
-      { name: "Salir", path: "/" },
+      { name: "Subir Habitación", path: "/subhabitacion" },
+      {
+        name: "Salir",
+        action: () => setIsModalOpen(true), // Abre el modal
+      },
     ],
   };
 
-  // Determina el rol basado en la ruta actual (puedes modificar esto según tu lógica real)
   const userRole = pathname.includes("vendedor") ? "propietario" : "cliente";
 
   return (
@@ -41,11 +57,34 @@ function Nav() {
         <ul className="menu-list">
           {menuItems[userRole].map((item, index) => (
             <li key={index}>
-              <a href={item.path}>{item.name}</a>
+              {item.path ? (
+                <a href={item.path}>{item.name}</a>
+              ) : (
+                <button onClick={item.action} className="menu-button">
+                  {item.name}
+                </button>
+              )}
             </li>
           ))}
         </ul>
       </nav>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>¿Deseas cerrar sesión?</h2>
+            <div className="modal-buttons">
+              <button className="btn-confirm" onClick={handleLogout}>
+                Confirmar
+              </button>
+              <button className="btn-cancel" onClick={() => setIsModalOpen(false)}>
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
