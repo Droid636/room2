@@ -27,14 +27,17 @@ export default function Login() {
 
       const data = await response.json();
       console.log(data);
-      const {  userRol } = data;
+      const { userRol } = data;
 
       console.log("Inicio de sesión exitoso:", { userRol }); // Log de éxito
 
+      // Redirige según el rol del usuario
       if (userRol === "cliente") {
         router.push("/home");
       } else if (userRol === "propietario") {
         router.push("/vendedor");
+      } else if (userRol === "admin") {
+        router.push("/administrador"); // Redirige a administrador si el rol es admin
       } else {
         throw new Error("Rol desconocido. Contacte al administrador.");
       }
