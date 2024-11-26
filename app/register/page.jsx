@@ -60,7 +60,7 @@ function Register() {
 
     try {
       const response = await fetch(
-        "https://clever-kindness-production.up.railway.app/users",
+        "https://clever-kindness-production.up.railway.app/api/users",
         {
           method: "POST",
           headers: {
